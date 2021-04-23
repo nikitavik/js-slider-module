@@ -10,6 +10,7 @@ export class Slider {
     constructor(selector, options) {
         this.$el = document.querySelector(selector)
 
+        this.step = options.step
         this.max = options.max
         this.min = options.min
 
@@ -26,12 +27,15 @@ export class Slider {
 
         this.dragHandler = this.dragHandler.bind(this)
 
+        this.$handle.style.right = `${100}%` // default position
+
         this.$bar.addEventListener("mousedown", ()=>{
             window.onmousemove = this.dragHandler
+            window.onmouseup = ()=> {window.onmousemove = null}
         }, false)
-        this.$bar.addEventListener("mouseup", ()=>{
-            window.onmousemove = null
-        }, false)
+        // this.$bar.addEventListener("mouseup", ()=>{
+        //     window.onmousemove = null
+        // }, false)
 
     }
     dragHandler(event){
@@ -45,11 +49,24 @@ export class Slider {
                 this.$handle.style.right = `${0}%`
             }
             else {
-                this.$handle.style.right = `${Math.abs((xPosition - this.$bar.offsetWidth)) * 100 / this.$bar.offsetWidth}%`
+                this.$handle.style.right = `${(this.$bar.offsetWidth - xPosition) * 100 / this.$bar.offsetWidth}%`
             }
 
+            this.calc()
     }
+    calc(){
+        const position = this.$handle.style.right.replace("%", '')
 
+        const step = this.step
+        const min = this.min
+        const max = this.max
+
+        let value = Math.round((max - min) * (+position / 100)) + min
+
+        let result = Math.round(value / step) * step
+
+        document.getElementById("value").textContent = result
+    }
 
 }
 

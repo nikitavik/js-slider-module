@@ -2,8 +2,9 @@ import "/slider/slider.scss"
 import {Slider} from "./slider/slider"
 
 const slider = new Slider("#slider", {
-        min: 1,
-        max: 100,
+        min: 10,
+        max: 500,
+        step: 10,
 
     }
 )
