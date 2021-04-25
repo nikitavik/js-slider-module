@@ -31,7 +31,7 @@ $handle: 20px;
     box-sizing: border-box;
     position: absolute;
 
-    left: 0%;
+    left: 0;
 
     display: flex;
     width: $handle;
@@ -53,9 +53,12 @@ $handle: 20px;
   &-handle-text{
     position: absolute;
     text-align: center;
-    top: -20px;
+    top: -25px;
     left: -5px;
     cursor: default;
+    border: 1px solid lightgreen;
+    padding: 0 5px;
+    border-radius: 10px;
     &::selection{
       background: transparent;
     }
