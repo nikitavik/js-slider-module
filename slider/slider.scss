@@ -1,11 +1,11 @@
 .app{
   display: flex;
-  padding-top: 10rem;
+  padding-top: 5rem;
   justify-content: center;
 }
 .wrap{
   width: 500px;
-  height: 500px;
+  height: 200px;
 }
 //
 $height: 10px;
@@ -31,6 +31,8 @@ $handle: 20px;
     box-sizing: border-box;
     position: absolute;
 
+    left: 0%;
+
     display: flex;
     width: $handle;
     height: $handle;
@@ -47,5 +49,15 @@ $handle: 20px;
     background-color: lightgreen;
 
     transform: revert;
+  }
+  &-handle-text{
+    position: absolute;
+    text-align: center;
+    top: -20px;
+    left: -5px;
+    cursor: default;
+    &::selection{
+      background: transparent;
+    }
   }
 }
