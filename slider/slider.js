@@ -56,15 +56,16 @@ export class Slider {
                 this.$handle.style.left = `${100 - (this.$bar.offsetWidth - xPosition) * 100 / this.$bar.offsetWidth}%`
                 this.$header.style.width = this.$handle.style.left
             }
+
+        this.handleTextHandler()
         this.#calc()
+
     }
-
-    #handleTextHandler(){
+    handleTextHandler(){
         if (this.options.handleText){
-            this.$header = this.$el.querySelector('[data-type="handle-text"]')
-            this.$header.textContent = this.getCurrent
+            this.$handleText = this.$el.querySelector('[data-type="handle-text"]')
+            this.$handleText.textContent = this.getCurrent
         }
-
     }
 
     #calc(){
