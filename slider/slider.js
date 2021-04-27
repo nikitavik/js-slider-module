@@ -30,7 +30,7 @@ export class Slider {
 
         this.dragHandler = this.dragHandler.bind(this)
 
-        this.$bar.addEventListener("mousedown", ()=>{
+        this.$bar.addEventListener("mousedown", ()=>{ // Переделай!!!
             window.onmousemove = this.dragHandler
             window.onmouseup = ()=> {window.onmousemove = null}
         }, false)
@@ -92,8 +92,8 @@ export class Slider {
             const fraction = current * 100 / this.max
             this.$handle.style.left = `${fraction}%`
             this.$header.style.width = this.$handle.style.left
-            console.log(fraction)
             this.current = current
+            this.handleTextHandler()
         }
         else {
             console.error("Incorrect Value")
